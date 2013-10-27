@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NationalPlaces</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+
+    <!-- NationalPlaces references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="pages/groupedItems/groupedItems.css" rel="stylesheet" />
+    <script src="/js/data.js"></script>
+    <script src="/js/navigator.js"></script>
+    <script src="js/sha1Generator.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/events.js"></script>
+    <script src="/js/default.js"></script>
+    <script src="js/groupedItems.js"></script>
+    <script src="js/picturesData.js"></script>
+
+    <!-- Search Result -->
+    <link href="pages/searchResultPage/searchResultPage.css" rel="stylesheet" />
+    <script src="pages/searchResultPage/searchResultPage.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <!--<span id="showLogin">LOGIN</span> <span id="showRegister">REGISTER</span>-->
+
+        <div id="loginForm">
+            <h1>Вход</h1>
+            <input type="text" placeholder="Въведете прякор..." id="username" /><br />
+            <input type="password" placeholder="Въведете парола..." id="password" /><br />
+            <button id="btnLogin">Вход</button>
+        </div>
+        <div id="registerForm">
+            <h1>Регистрация</h1>
+            <input type="text" placeholder="Въведете прякор..." id="regUsername" /><br />
+            <input type="text" placeholder="Въведете цялото си име..." id="fullName" /><br />
+            <input type="password" placeholder="Въведете парола..." id="regPassword" /><br />
+            <img height="40px" src="#" id="profile-image-container" />
+            <button id="btnCamera">Направи профилна снимка</button>
+            <button id="btnRegister">Регистрация</button>
+        </div>
+
+        <div id="menu-id" data-win-control="WinJS.UI.Menu", data-win-options="{anchor:'myProfile'}">
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'btnShowPictures',label:'Снимки'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'btnUploadPicture',label:'Качи снимки'}"></button>
+        </div>
+
+        <div id="appBarContainer">
+            <div id="appbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'top'}" style="height: 50px;">
+                <button data-win-control="WinJS.UI.AppBarCommand" id="btnCheckIn">Отбележи ме!</button>
+                <button data-win-control="WinJS.UI.AppBarCommand" id="btnLogout" style="margin: 0px 0px 0px 5px;">
+                    Изход
+                </button>
+                <button data-win-control="WinJS.UI.AppBarCommand" id="myProfile">Профил</button>
+            </div>
+        </div>
+
+        <div id="pictiresContainer">
+            <div id="picturesView" data-win-control="WinJS.Binding.Template">
+                <div style="padding: 10px; overflow: hidden; display: -ms-grid">
+
+                    <img data-win-bind="src: picture"
+                        src="#"
+                        style="width: 100px; height: 100px; margin: 0 auto; -ms-grid-column: 3;" />
+                </div>
+            </div>
+            <!--<button data-win-control="WinJS.UI.BackButton" ></button>-->
+            <header aria-label="Header content" role="banner">
+                <h1>Снимки</h1>
+            </header>
+            <div id="picturesList" data-win-control="WinJS.UI.ListView"
+                data-win-options="{
+                itemDataSource : PicturesData.itemList.dataSource, 
+                selectionMode: 'none',
+                itemTemplate: select('#picturesView'),
+	            layout : {type: WinJS.UI.GridLayout}}">
+            </div>
+        </div>
+
+        <div id="placesContent">
+
+            <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/groupedItems/groupedItems.html'}"></div>
+        </div>
+    </div>
+
+
+
+    <!--<div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/groupedItems/groupedItems.html'}"></div>
+    <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
+                 <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
+             </div> -->
+
+</body>
+</html>
